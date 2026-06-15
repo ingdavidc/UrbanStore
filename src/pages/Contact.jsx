@@ -154,7 +154,7 @@ export default function Contact() {
             <div className={styles.mapEmbed}>
               <iframe
                 title="Urban Store Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.7843206697354!2d-74.05262548573246!3d4.676837596604437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a8d16c58d13%3A0x3c9437d8b0b5d6f4!2sCentro%20Comercial%20Andino!5e0!3m2!1ses!2sco!4v1686000000000!5m2!1ses!2sco"
+                src="https://maps.google.com/maps?q=Cl.%2026%20%23%2015-75%2C%20Saravena%2C%20Arauca&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="220"
                 style={{ border: 0 }}
