@@ -43,6 +43,7 @@ export default function Navbar() {
     { to: '/',         label: 'Inicio' },
     { to: '/catalogo', label: 'Catálogo' },
     { to: '/contacto', label: 'Contacto' },
+    { to: '/pos',      label: 'Caja POS' },
   ]
 
   return (
@@ -179,6 +180,9 @@ export default function Navbar() {
             ))}
             <Link to="/admin" className={styles.mobileAdminLink} onClick={closeMenu}>
               Panel Admin
+            </Link>
+            <Link to="/pos" className={styles.mobileAdminLink} onClick={closeMenu} style={{ marginTop: '10px', background: '#8FC740', color: '#000' }}>
+              Punto de Venta (Caja)
             </Link>
           </div>
         </div>

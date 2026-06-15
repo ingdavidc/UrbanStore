@@ -25,6 +25,7 @@ import AdminCustomers from './pages/admin/Customers'
 import AdminSocialHub from './pages/admin/SocialHub'
 import AdminPanel     from './pages/admin/AdminPanel'
 import AdminLayout    from './components/admin/AdminLayout'
+import PosTerminal    from './pages/admin/PosTerminal'
 
 // ── Route Guards ──────────────────────────────────────────────
 function ProtectedRoute({ children }) {
@@ -71,6 +72,11 @@ export default function App() {
           <Route path="clientes"        element={<AdminCustomers />} />
           <Route path="redes-sociales"  element={<AdminSocialHub />} />
         </Route>
+
+        {/* ── POS ────────────────────────────────────────── */}
+        <Route path="/pos" element={
+          <ProtectedRoute><PosTerminal /></ProtectedRoute>
+        } />
 
         {/* ── Fallback ───────────────────────────────────── */}
         <Route path="*" element={<Navigate to="/" replace />} />
