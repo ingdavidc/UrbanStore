@@ -265,12 +265,43 @@ export default function Home() {
         <div className="container">
           <h2 className={styles.paymentTitle} id="payments-title">Métodos de pago aceptados</h2>
           <div className={styles.paymentMethods}>
-            {['MercadoPago', 'Addi', 'Sistecredito', 'Transferencia', 'Contra entrega'].map((m) => (
-              <div key={m} className={styles.paymentMethod}>
-                <span className={styles.paymentDot} aria-hidden="true" />
-                {m}
-              </div>
-            ))}
+            {/* MercadoPago */}
+            <div className={`${styles.paymentMethod} ${styles.mpCard}`} title="MercadoPago">
+              <span className={styles.methodIcon}>🔵</span>
+              <span className={styles.methodText}>Mercado Pago</span>
+            </div>
+
+            {/* Addi */}
+            <div className={`${styles.paymentMethod} ${styles.addiCard}`} title="Addi">
+              <span className={styles.methodIcon} style={{color: '#00E676'}}>⚫</span>
+              <span className={styles.methodText}>Addi</span>
+            </div>
+
+            {/* Sistecredito */}
+            <div className={`${styles.paymentMethod} ${styles.sisteCard}`} title="Sistecrédito">
+              <span className={styles.methodIcon} style={{color: '#00C853'}}>🟢</span>
+              <span className={styles.methodText}>Sistecrédito</span>
+            </div>
+
+            {/* Transferencia */}
+            <div className={`${styles.paymentMethod} ${styles.bankCard}`} title="Transferencia Bancaria">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{color: '#8FC740'}}>
+                <rect x="2" y="5" width="20" height="14" rx="2" />
+                <line x1="2" y1="10" x2="22" y2="10" />
+              </svg>
+              <span className={styles.methodText}>Transferencia</span>
+            </div>
+
+            {/* Contra entrega */}
+            <div className={`${styles.paymentMethod} ${styles.codCard}`} title="Contra entrega">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{color: '#8FC740'}}>
+                <rect x="1" y="3" width="15" height="13" rx="2" ry="2"/>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+              <span className={styles.methodText}>Contra entrega</span>
+            </div>
           </div>
         </div>
       </section>
