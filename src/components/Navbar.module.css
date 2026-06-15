@@ -1,0 +1,305 @@
+/* ── Navbar.module.css ─────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--navbar-height);
+  background: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition-base);
+}
+
+.navbar.scrolled {
+  border-bottom-color: var(--color-border);
+  background: rgba(17, 17, 17, 0.97);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: var(--space-8);
+}
+
+/* ── Logo ─────────────────────────────────────────────────── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoUs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: white;
+  color: var(--color-bg-deep);
+  border-radius: 50%;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--text-sm);
+  flex-shrink: 0;
+  border: 2px solid var(--color-accent);
+}
+
+.logoText {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--text-xl);
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+}
+
+.logoSlash {
+  color: var(--color-accent);
+}
+
+/* ── Nav Links ─────────────────────────────────────────────── */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  position: relative;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast);
+  letter-spacing: 0.02em;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-base);
+}
+
+.navLink:hover {
+  color: var(--color-text);
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  width: calc(100% - 24px);
+}
+
+.navLink.active {
+  color: var(--color-accent);
+}
+
+/* ── Actions ──────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.iconBtn {
+  background: var(--color-surface) !important;
+  color: var(--color-text-muted) !important;
+  border: 1px solid var(--color-border) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.iconBtn:hover {
+  color: var(--color-text) !important;
+  border-color: var(--color-accent) !important;
+  background: var(--color-surface-2) !important;
+}
+
+/* Cart button */
+.cartBtn {
+  position: relative;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--color-accent);
+  color: var(--color-bg-deep);
+  font-size: 10px;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  min-width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  animation: scaleIn 0.2s var(--transition-spring);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--color-text-muted);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.hamburgerLine::before,
+.hamburgerLine::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: var(--color-text-muted);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+.hamburgerLine::before { top: -6px; }
+.hamburgerLine::after  { top:  6px; }
+
+.hamburgerLine.open {
+  background: transparent;
+}
+.hamburgerLine.open::before {
+  top: 0;
+  transform: rotate(45deg);
+  background: var(--color-accent);
+}
+.hamburgerLine.open::after {
+  top: 0;
+  transform: rotate(-45deg);
+  background: var(--color-accent);
+}
+
+/* ── Search Bar ───────────────────────────────────────────── */
+.searchBar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-4) 0;
+  animation: fadeIn 0.2s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.searchInput {
+  flex: 1;
+  background: var(--color-surface-2);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-base);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.searchInput:focus {
+  border-color: var(--color-accent);
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-faint);
+}
+
+/* ── Mobile Menu ──────────────────────────────────────────── */
+.mobileMenu {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-bg-deep);
+  z-index: 999;
+  animation: fadeIn 0.25s ease;
+}
+
+.mobileMenuInner {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-8);
+  gap: var(--space-2);
+}
+
+.mobileLink {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--color-text-muted);
+  padding: var(--space-3) 0;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border);
+  transition: color var(--transition-fast);
+  letter-spacing: -0.01em;
+}
+
+.mobileLink:hover,
+.mobileLink.mobileActive {
+  color: var(--color-accent);
+}
+
+.mobileAdminLink {
+  margin-top: var(--space-8);
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+  padding: var(--space-2) 0;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.mobileAdminLink:hover {
+  color: var(--color-text-muted);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex !important;
+  }
+}

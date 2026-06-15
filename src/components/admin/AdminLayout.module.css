@@ -1,0 +1,40 @@
+/* ============================================================
+   AdminLayout.module.css
+   ============================================================ */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-bg, #1C1C1C);
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+/* The sidebar occupies a fixed 260px column */
+/* AdminSidebar renders as position:fixed, so we push main content */
+.main {
+  margin-left: 260px;
+  flex: 1;
+  min-height: 100vh;
+  background: var(--color-bg, #1C1C1C);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.content {
+  flex: 1;
+  padding: 32px;
+  max-width: 1400px;
+  width: 100%;
+}
+
+/* Responsive – collapse sidebar below 900px */
+@media (max-width: 900px) {
+  .main {
+    margin-left: 0;
+  }
+
+  .content {
+    padding: 20px 16px;
+  }
+}
