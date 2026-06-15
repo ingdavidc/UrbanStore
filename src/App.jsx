@@ -23,6 +23,7 @@ import AdminInventory from './pages/admin/Inventory'
 import AdminOrders    from './pages/admin/Orders'
 import AdminCustomers from './pages/admin/Customers'
 import AdminSocialHub from './pages/admin/SocialHub'
+import AdminPanel     from './pages/admin/AdminPanel'
 import AdminLayout    from './components/admin/AdminLayout'
 
 // ── Route Guards ──────────────────────────────────────────────
@@ -62,7 +63,9 @@ export default function App() {
         <Route path="/admin" element={
           <ProtectedRoute><AdminLayout /></ProtectedRoute>
         }>
-          <Route index          element={<AdminDashboard />} />
+          <Route index          element={<AdminPanel />} />
+          <Route path="panel"           element={<AdminPanel />} />
+          <Route path="dashboard"       element={<AdminDashboard />} />
           <Route path="inventario"      element={<AdminInventory />} />
           <Route path="pedidos"         element={<AdminOrders />} />
           <Route path="clientes"        element={<AdminCustomers />} />

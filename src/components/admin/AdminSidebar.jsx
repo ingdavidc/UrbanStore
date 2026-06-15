@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
+import useAuthStore from '../../store/authStore';
 import styles from './AdminSidebar.module.css';
 
 /* ── Inline SVG icons ── */
@@ -55,7 +56,7 @@ const IconLogout = () => (
 );
 
 const navItems = [
-  { to: '/admin',              label: 'Dashboard',       Icon: IconDashboard, end: true },
+  { to: '/admin',              label: 'Panel General',   Icon: IconDashboard, end: true },
   { to: '/admin/inventario',   label: 'Inventario',      Icon: IconBox },
   { to: '/admin/pedidos',      label: 'Pedidos',         Icon: IconBag },
   { to: '/admin/clientes',     label: 'Clientes',        Icon: IconUsers },
