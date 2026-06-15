@@ -28,12 +28,13 @@ const useAuthStore = create(
         // Credenciales válidas para la maqueta
         if (
           (email === 'admin@urban8store.com' && password === 'admin123') ||
+          (email === 'admin@urbanstore.com' && password === 'urban2026') ||
           (email === '' && password === '')  // acceso rápido en maqueta
         ) {
           set({ user: DEMO_USER, isLoading: false })
           return true
         } else {
-          set({ error: 'Credenciales incorrectas. Usa admin@urban8store.com / admin123', isLoading: false })
+          set({ error: 'Credenciales incorrectas. Usa admin@urbanstore.com / urban2026', isLoading: false })
           return false
         }
       },

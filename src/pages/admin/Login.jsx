@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useAuthStore from '../../store/authStore';
 import styles from './Login.module.css';
 
 /*
@@ -13,15 +14,23 @@ const DEMO_PASSWORD = 'urban2026';
 
 export default function Login() {
   const navigate = useNavigate();
+  const login = useAuthStore((state) => state.login);
+  const storeError = useAuthStore((state) => state.error);
+  const clearError = useAuthStore((state) => state.clearError);
 
   const [email, setEmail]     = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading]   = useState(false);
   const [error, setError]       = useState('');
 
+  useEffect(() => {
+    clearError();
+  }, [clearError]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    clearError();
 
     if (!email.trim() || !password.trim()) {
       setError('Por favor ingresa tu correo y contraseña.');
@@ -29,14 +38,12 @@ export default function Login() {
     }
 
     setLoading(true);
-
-    // Simulate network delay for realism
-    await new Promise((r) => setTimeout(r, 900));
-
-    // Accept DEMO credentials or any non-empty combo for demo purposes
-    localStorage.setItem('admin_auth', JSON.stringify({ email, loggedInAt: Date.now() }));
+    const success = await login(email, password);
     setLoading(false);
-    navigate('/admin');
+
+    if (success) {
+      navigate('/admin');
+    }
   };
 
   return (
@@ -61,14 +68,14 @@ export default function Login() {
           <span>Demo:</span> {DEMO_EMAIL} / {DEMO_PASSWORD}
         </div>
 
-        {error && (
+        {(error || storeError) && (
           <div className={styles.errorBox} role="alert">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="8" x2="12" y2="12" />
               <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
-            {error}
+            {error || storeError}
           </div>
         )}
 
