@@ -14,7 +14,7 @@ const CATALOG = [
 ];
 
 const CATEGORIES = ['Todos', 'Calzado', 'Hombre', 'Mujer', 'Accesorios'];
-const PAYMENT_METHODS = ['Efectivo', 'Tarjeta (Datafono)', 'Nequi / Daviplata', 'Addi', 'Sistecrédito'];
+const PAYMENT_METHODS = ['Efectivo', 'Tarjeta (Datafono)', 'Nequi / Daviplata', 'Addi', 'Sistecrédito', 'Sistema de Apartado', 'Crédito Directo'];
 
 export default function PosTerminal() {
   const [search, setSearch] = useState('');
