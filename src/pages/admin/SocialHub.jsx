@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useClientMediaStore from '../../store/clientMediaStore';
 import styles from './SocialHub.module.css';
 
 /* ── Mock data ── */
@@ -108,6 +109,10 @@ const IconImage = () => (
 );
 
 export default function SocialHub() {
+  const addClientPost = useClientMediaStore((state) => state.addPost);
+  const clientPosts = useClientMediaStore((state) => state.posts);
+  const deleteClientPost = useClientMediaStore((state) => state.deletePost);
+
   const [caption, setCaption]         = useState('');
   const [selectedPlatforms, setSelectedPlatforms] = useState([]);
   const [scheduleDate, setScheduleDate] = useState('');
@@ -131,6 +136,46 @@ export default function SocialHub() {
     showToast('✅ Publicación enviada (demo – sin API conectada)');
     setCaption('');
     setSelectedPlatforms([]);
+  };
+
+  // Client Post state
+  const [clientUser, setClientUser] = useState('@');
+  const [clientCaption, setClientCaption] = useState('');
+  const [clientSource, setClientSource] = useState('Instagram');
+  const [clientMedia, setClientMedia] = useState('/assets/images/product-sneaker.png');
+
+  const handleAddClientPost = (e) => {
+    e.preventDefault();
+    if (!clientUser.trim() || clientUser === '@') {
+      showToast('⚠️ Ingresa un usuario de cliente válido (ej: @carlos_m)');
+      return;
+    }
+    if (!clientCaption.trim()) {
+      showToast('⚠️ Ingresa el comentario del cliente');
+      return;
+    }
+
+    const mediaType = clientMedia.endsWith('.mp4') ? 'video' : 'image';
+    const sourceColors = {
+      'Instagram': '#E1306C',
+      'Instagram Story': '#E1306C',
+      'Facebook': '#1877F2',
+      'TikTok / Reel': '#00F2FE',
+      'Directo Web': '#8FC740'
+    };
+
+    addClientPost({
+      username: clientUser,
+      mediaType,
+      mediaUrl: clientMedia,
+      caption: clientCaption,
+      source: clientSource,
+      sourceColor: sourceColors[clientSource] || '#ffffff'
+    });
+
+    showToast('📸 ¡Foto de cliente agregada al feed en tiempo real!');
+    setClientUser('@');
+    setClientCaption('');
   };
 
   const handleSchedule = () => {
@@ -295,8 +340,78 @@ export default function SocialHub() {
           </div>
         </div>
 
-        {/* ── Right: Recent Posts ── */}
+        {/* ── Right: Clients Feed Moderation + Recent Posts ── */}
         <div className={styles.rightCol}>
+          {/* Clients moderation card */}
+          <div className={styles.card}>
+            <h2 className={styles.cardTitle}>Feed de Clientes en Tiempo Real</h2>
+            <p className={styles.cardInfoText}>
+              Sube fotos y videos de tus ventas. Se mostrarán en la sección "Nuestros Clientes" de la página principal.
+            </p>
+            
+            <form onSubmit={handleAddClientPost} className={styles.clientForm}>
+              <div className={styles.formGroup}>
+                <label className={styles.fieldLabel}>Usuario del Cliente</label>
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="@usuario_instagram"
+                  value={clientUser}
+                  onChange={(e) => setClientUser(e.target.value)}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.fieldLabel}>Comentario / Caption</label>
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="¡Estrenando mis zapatillas!"
+                  value={clientCaption}
+                  onChange={(e) => setClientCaption(e.target.value)}
+                />
+              </div>
+
+              <div className={styles.formRow}>
+                <div className={styles.formGroup}>
+                  <label className={styles.fieldLabel}>Red Social / Origen</label>
+                  <select
+                    className="input"
+                    value={clientSource}
+                    onChange={(e) => setClientSource(e.target.value)}
+                  >
+                    <option value="Instagram">Instagram</option>
+                    <option value="Instagram Story">Instagram Story</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="TikTok / Reel">TikTok / Reel</option>
+                    <option value="Directo Web">Directo Web</option>
+                  </select>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label className={styles.fieldLabel}>Imagen / Video a Mostrar</label>
+                  <select
+                    className="input"
+                    value={clientMedia}
+                    onChange={(e) => setClientMedia(e.target.value)}
+                  >
+                    <option value="/assets/images/product-sneaker.png">Zapatillas Neon Run (Imagen)</option>
+                    <option value="/assets/images/product-hoodie.png">Hoodie Streetwear (Imagen)</option>
+                    <option value="/assets/images/product-cap.png">Gorra Snapback (Imagen)</option>
+                    <option value="/assets/images/product-tshirt.png">Camiseta Oversized (Imagen)</option>
+                    <option value="/assets/images/product-jogger.png">Jogger Cargo (Imagen)</option>
+                    <option value="/assets/images/product-set.png">Conjunto Deportivo Fem (Imagen)</option>
+                    <option value="/assets/videos/urban-dance.mp4">Bailarín Urbano (Video MP4)</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" className="btn btn-primary btn-full" style={{ marginTop: 'var(--space-3)' }}>
+                📸 Publicar en Sección "Nuestros Clientes"
+              </button>
+            </form>
+          </div>
+
           <div className={styles.card}>
             <h2 className={styles.cardTitle}>Publicaciones Recientes</h2>
             <div className={styles.postsGrid}>

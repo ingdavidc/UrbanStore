@@ -365,3 +365,41 @@
 }
 
 .statItem svg { color: #f87171; }
+
+.cardInfoText {
+  font-size: 13px;
+  color: var(--color-text-muted, #9a9a9a);
+  margin-top: -10px;
+  margin-bottom: 20px;
+  line-height: 1.45;
+}
+
+.clientForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted, #9a9a9a);
+}

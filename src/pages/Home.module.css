@@ -512,3 +512,138 @@
   .trustBadges    { flex-direction: column; gap: var(--space-2); }
   .paymentMethods { gap: var(--space-3); }
 }
+
+.homePaymentLogo {
+  height: 22px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0.8);
+  transition: filter var(--transition-fast);
+}
+
+.paymentMethod:hover .homePaymentLogo {
+  filter: none;
+}
+
+/* ── CLIENTS SECTION ────────────────────────────────────────── */
+.clientsSection {
+  background: var(--color-bg);
+}
+
+.clientsSubtitle {
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: var(--space-2) auto 0 auto;
+  font-size: var(--text-sm);
+}
+
+.clientsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+@media (max-width: 1024px) {
+  .clientsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .clientsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.clientCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.clientMediaWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1; /* Square media */
+  background: #000;
+  overflow: hidden;
+}
+
+.clientMedia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.verifiedBadge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  background: rgba(143, 199, 64, 0.9);
+  color: #000;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: var(--space-1) var(--space-2-5);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.02em;
+}
+
+.liveTag {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background: #ff3333;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: var(--space-1) var(--space-2-5);
+  border-radius: var(--radius-sm);
+  animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.clientContent {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex-grow: 1;
+}
+
+.clientMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+}
+
+.clientUser {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.clientSource {
+  font-weight: 600;
+}
+
+.clientCaption {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.clientTime {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  align-self: flex-start;
+}

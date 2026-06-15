@@ -116,6 +116,10 @@ export default function Footer() {
           <p className={styles.copy}>
             © {year} UrbanStore. Todos los derechos reservados.
           </p>
+          <div className={styles.poweredBy}>
+            <span>Powered by</span>
+            <img src="/assets/images/dc-logo.png" alt="DC" className={styles.poweredLogo} />
+          </div>
           <Link to="/admin" className={styles.adminLink}>
             Panel Administrador
           </Link>

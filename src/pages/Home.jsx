@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import ProductCard from '../components/ProductCard'
+import useClientMediaStore from '../store/clientMediaStore'
 import styles from './Home.module.css'
 
 // ── Mock data (replace with Firebase Firestore data) ──────────
@@ -78,6 +79,8 @@ const fadeUp = {
 }
 
 export default function Home() {
+  const posts = useClientMediaStore((state) => state.posts);
+
   return (
     <div className={styles.page}>
       {/* ── HERO SECTION ─────────────────────────────────── */}
@@ -269,6 +272,75 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── CLIENTS COMMUNITY (Real-time feed) ───────────── */}
+      <section className={`section ${styles.clientsSection}`} aria-labelledby="clients-title">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-label">Comunidad #UrbanStore</span>
+            <h2 className="section-title" id="clients-title">Nuestros Clientes</h2>
+            <p className={styles.clientsSubtitle}>
+              Fotos y videos compartidos en tiempo real por nuestros compradores en tienda y redes sociales.
+            </p>
+          </div>
+
+          <div className={styles.clientsGrid}>
+            {posts.slice(0, 4).map((post) => (
+              <motion.div
+                key={post.id}
+                className={styles.clientCard}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className={styles.clientMediaWrapper}>
+                  {post.mediaType === 'video' ? (
+                    <video
+                      src={post.mediaUrl}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className={styles.clientMedia}
+                    />
+                  ) : (
+                    <img
+                      src={post.mediaUrl}
+                      alt={post.caption}
+                      className={styles.clientMedia}
+                    />
+                  )}
+                  {post.verifiedPurchase && (
+                    <span className={styles.verifiedBadge}>
+                      ✓ Compra Verificada
+                    </span>
+                  )}
+                  {post.timestamp.includes('vivo') && (
+                    <span className={styles.liveTag}>
+                      En Vivo
+                    </span>
+                  )}
+                </div>
+                <div className={styles.clientContent}>
+                  <div className={styles.clientMeta}>
+                    <span className={styles.clientUser}>{post.username}</span>
+                    <span 
+                      className={styles.clientSource}
+                      style={{ color: post.sourceColor }}
+                    >
+                      {post.source}
+                    </span>
+                  </div>
+                  <p className={styles.clientCaption}>{post.caption}</p>
+                  <span className={styles.clientTime}>{post.timestamp}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── PROMO BANNER ─────────────────────────────────── */}
       <section className={`section-sm ${styles.promoBanner}`} aria-label="Promoción especial">
         <div className="container">
@@ -305,20 +377,17 @@ export default function Home() {
           <div className={styles.paymentMethods}>
             {/* MercadoPago */}
             <div className={`${styles.paymentMethod} ${styles.mpCard}`} title="MercadoPago">
-              <span className={styles.methodIcon}>🔵</span>
-              <span className={styles.methodText}>Mercado Pago</span>
+              <img src="/assets/images/mercadopago.png" alt="Mercado Pago" className={styles.homePaymentLogo} />
             </div>
 
             {/* Addi */}
             <div className={`${styles.paymentMethod} ${styles.addiCard}`} title="Addi">
-              <span className={styles.methodIcon} style={{color: '#00E676'}}>⚫</span>
-              <span className={styles.methodText}>Addi</span>
+              <img src="/assets/images/addi.png" alt="Addi" className={styles.homePaymentLogo} />
             </div>
 
             {/* Sistecredito */}
             <div className={`${styles.paymentMethod} ${styles.sisteCard}`} title="Sistecrédito">
-              <span className={styles.methodIcon} style={{color: '#00C853'}}>🟢</span>
-              <span className={styles.methodText}>Sistecrédito</span>
+              <img src="/assets/images/sistecredito.png" alt="Sistecrédito" className={styles.homePaymentLogo} />
             </div>
 
             {/* Transferencia */}
