@@ -195,7 +195,7 @@ export default function Home() {
               preload="auto"
               className={styles.brandShowcaseVideo}
             >
-              <source src="/assets/videos/skate-shadow.mp4" type="video/mp4" />
+              <source src="/assets/videos/urban-dance.mp4" type="video/mp4" />
               Tu navegador no soporta reproducción de video.
             </video>
             <div className={styles.videoOverlay}>
