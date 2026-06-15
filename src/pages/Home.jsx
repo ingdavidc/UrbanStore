@@ -95,7 +95,7 @@ export default function Home() {
             preload="auto"
             className={styles.heroVideo}
           >
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-man-dancing-under-neon-lights-in-streetwear-40348-large.mp4" type="video/mp4" />
+            <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054ba273e32c3eed21d857f6e52c800&profile_id=139&oauth2_token_id=57447761" type="video/mp4" />
           </video>
         </div>
 
@@ -196,7 +196,7 @@ export default function Home() {
               preload="auto"
               className={styles.brandShowcaseVideo}
             >
-              <source src="https://assets.mixkit.co/videos/preview/mixkit-skater-doing-tricks-in-a-skatepark-at-sunset-34283-large.mp4" type="video/mp4" />
+              <source src="https://player.vimeo.com/external/341496265.sd.mp4?s=d0f04c636f456c701ccbe831e51be7737e94e5e4&profile_id=164&oauth2_token_id=57447761" type="video/mp4" />
               Tu navegador no soporta reproducción de video.
             </video>
             <div className={styles.videoOverlay}>
