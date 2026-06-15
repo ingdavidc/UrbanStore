@@ -53,9 +53,11 @@ export default function Home() {
             loop
             muted
             playsInline
+            preload="auto"
             className={styles.heroVideo}
-            src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054ba273e32c3eed21d857f6e52c800&profile_id=139&oauth2_token_id=57447761"
-          />
+          >
+            <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054ba273e32c3eed21d857f6e52c800&profile_id=139&oauth2_token_id=57447761" type="video/mp4" />
+          </video>
         </div>
 
         <div className={`container ${styles.heroContent}`}>
@@ -152,9 +154,12 @@ export default function Home() {
               loop
               muted
               playsInline
+              preload="auto"
               className={styles.brandShowcaseVideo}
-              src="https://player.vimeo.com/external/341496265.sd.mp4?s=d0f04c636f456c701ccbe831e51be7737e94e5e4&profile_id=164&oauth2_token_id=57447761"
-            />
+            >
+              <source src="https://player.vimeo.com/external/341496265.sd.mp4?s=d0f04c636f456c701ccbe831e51be7737e94e5e4&profile_id=164&oauth2_token_id=57447761" type="video/mp4" />
+              Tu navegador no soporta reproducción de video.
+            </video>
             <div className={styles.videoOverlay}>
               <div className={styles.videoOverlayContent}>
                 <h3>Colección Streetwear 2026</h3>
