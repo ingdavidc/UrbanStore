@@ -24,10 +24,12 @@
   cursor: pointer;
   text-decoration: none;
   position: relative;
-  transition: border-color var(--transition-base), color var(--transition-base), background var(--transition-base);
+  opacity: 0.5;
+  transition: border-color var(--transition-base), color var(--transition-base), background var(--transition-base), opacity var(--transition-base);
 }
 
 .barItem:hover {
+  opacity: 1;
   color: var(--color-text);
   background: rgba(36, 36, 36, 0.95);
   border-color: var(--hover-color);

@@ -210,7 +210,13 @@
   background: rgba(143, 199, 64, 0.05) !important;
 }
 
-.paymentIcon { font-size: 1.4rem; }
+.paymentIcon { font-size: 1.4rem; display: flex; align-items: center; justify-content: center; }
+.paymentLogoImg {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
 
 .paymentInfo { display: flex; flex-direction: column; gap: 0.2rem; }
 .paymentLabel { font-weight: 600; font-size: 0.95rem; }
