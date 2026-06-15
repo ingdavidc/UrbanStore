@@ -1,37 +1,50 @@
+/**
+ * Auth Store — MAQUETA (sin Firebase)
+ * Login simple con credenciales hardcodeadas para demostración.
+ * Usuario demo: admin@urban8store.com / admin123
+ */
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { auth } from '../firebase/config'
-import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth'
+
+const DEMO_USER = {
+  uid:   'demo-admin-001',
+  email: 'admin@urban8store.com',
+  name:  'Administrador',
+  role:  'admin',
+}
 
 const useAuthStore = create(
   persist(
     (set) => ({
-      user: null,
+      user:      null,
       isLoading: false,
-      error: null,
-
-      // Initialize auth listener
-      initAuth: () => {
-        onAuthStateChanged(auth, (user) => {
-          set({ user: user ? { uid: user.uid, email: user.email } : null })
-        })
-      },
+      error:     null,
 
       login: async (email, password) => {
         set({ isLoading: true, error: null })
-        try {
-          const result = await signInWithEmailAndPassword(auth, email, password)
-          set({ user: { uid: result.user.uid, email: result.user.email }, isLoading: false })
+        // Simular delay de red
+        await new Promise((r) => setTimeout(r, 800))
+
+        // Credenciales válidas para la maqueta
+        if (
+          (email === 'admin@urban8store.com' && password === 'admin123') ||
+          (email === '' && password === '')  // acceso rápido en maqueta
+        ) {
+          set({ user: DEMO_USER, isLoading: false })
           return true
-        } catch (err) {
-          set({ error: err.message, isLoading: false })
+        } else {
+          set({ error: 'Credenciales incorrectas. Usa admin@urban8store.com / admin123', isLoading: false })
           return false
         }
       },
 
-      logout: async () => {
-        await signOut(auth)
-        set({ user: null })
+      // Acceso directo para demo (sin credenciales)
+      loginDemo: () => {
+        set({ user: DEMO_USER, error: null })
+      },
+
+      logout: () => {
+        set({ user: null, error: null })
       },
 
       clearError: () => set({ error: null }),

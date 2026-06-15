@@ -1,5 +1,4 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../../store/authStore';
 import styles from './AdminSidebar.module.css';
 
 /* ── Inline SVG icons ── */

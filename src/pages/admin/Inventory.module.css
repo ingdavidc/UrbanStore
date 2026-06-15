@@ -1,0 +1,310 @@
+/* ============================================================
+   Inventory.module.css
+   ============================================================ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pageTitle {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text, #FFFFFF);
+  margin: 0 0 4px;
+}
+
+.pageSubtitle {
+  font-size: 14px;
+  color: var(--color-text-muted, #9A9A9A);
+  margin: 0;
+}
+
+/* Search */
+.searchBar {
+  max-width: 420px;
+}
+
+.searchInput {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Table Card */
+.tableCard {
+  background: var(--color-surface, #242424);
+  border: 1px solid var(--color-border, #333333);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.table thead tr {
+  background: var(--color-surface-2, #2E2E2E);
+}
+
+.table th {
+  text-align: left;
+  padding: 12px 18px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #9A9A9A);
+  border-bottom: 1px solid var(--color-border, #333333);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 12px 18px;
+  color: var(--color-text, #FFFFFF);
+  border-bottom: 1px solid rgba(51, 51, 51, 0.50);
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+
+.table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.table tbody tr:hover {
+  background: rgba(143, 199, 64, 0.04);
+}
+
+.emptyRow {
+  text-align: center;
+  color: var(--color-text-muted, #9A9A9A);
+  padding: 40px !important;
+}
+
+.productImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: var(--color-surface-2, #2E2E2E);
+  display: block;
+}
+
+.productName {
+  font-weight: 600;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skuCell {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 12px;
+  color: var(--color-text-muted, #9A9A9A);
+}
+
+.tallasRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tallaChip {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--color-surface-2, #2E2E2E);
+  color: var(--color-text-muted, #9A9A9A);
+  border: 1px solid var(--color-border, #333333);
+}
+
+.stockCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.priceCell {
+  font-weight: 600;
+  color: var(--color-accent, #8FC740);
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ── Modal ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.70);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal {
+  background: var(--color-surface, #242424);
+  border: 1px solid var(--color-border, #333333);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.60);
+  animation: modalIn 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(20px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+.confirmModal {
+  max-width: 400px;
+  padding: 32px;
+}
+
+.confirmText {
+  color: var(--color-text-muted, #9A9A9A);
+  font-size: 14px;
+  margin: 10px 0 24px;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid var(--color-border, #333333);
+}
+
+.modalTitle {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text, #FFFFFF);
+  margin: 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted, #9A9A9A);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.closeBtn:hover {
+  color: var(--color-text, #FFFFFF);
+  background: var(--color-surface-2, #2E2E2E);
+}
+
+/* Form */
+.form {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 520px) {
+  .formGrid { grid-template-columns: 1fr; }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--color-text-muted, #9A9A9A);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Tallas checkboxes */
+.tallasCheck {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.checkLabel {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  cursor: pointer;
+}
+
+.checkLabel input[type='checkbox'] {
+  display: none;
+}
+
+.checkChip {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--color-surface-2, #2E2E2E);
+  color: var(--color-text-muted, #9A9A9A);
+  border: 1px solid var(--color-border, #333333);
+  transition: all 0.15s;
+}
+
+.checkLabel input[type='checkbox']:checked + .checkChip {
+  background: rgba(143, 199, 64, 0.15);
+  color: var(--color-accent, #8FC740);
+  border-color: var(--color-accent, #8FC740);
+}
+
+/* Modal footer */
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 8px;
+}

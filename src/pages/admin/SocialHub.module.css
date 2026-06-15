@@ -1,0 +1,367 @@
+/* ============================================================
+   SocialHub.module.css
+   ============================================================ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: var(--color-surface, #242424);
+  border: 1px solid var(--color-accent, #8FC740);
+  border-radius: 12px;
+  padding: 14px 22px;
+  color: var(--color-text, #FFFFFF);
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 300;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.50);
+  animation: slideUp 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Header */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pageTitle {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text, #FFFFFF);
+  margin: 0 0 4px;
+}
+
+.pageSubtitle {
+  font-size: 14px;
+  color: var(--color-text-muted, #9A9A9A);
+  margin: 0;
+}
+
+/* ── Account cards ── */
+.accountsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .accountsRow { grid-template-columns: 1fr; }
+}
+
+.accountCard {
+  background: var(--color-surface, #242424);
+  border: 1px solid var(--color-border, #333333);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.accountIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--acc-color) 15%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--acc-color, #8FC740);
+  flex-shrink: 0;
+}
+
+.accountInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.accountName {
+  font-weight: 600;
+  color: var(--color-text, #FFFFFF);
+  margin: 0 0 3px;
+  font-size: 14px;
+}
+
+.accountHandle {
+  font-size: 12px;
+  color: var(--color-text-muted, #9A9A9A);
+  margin: 0;
+}
+
+.accountStatus {
+  flex-shrink: 0;
+}
+
+/* ── Main grid ── */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .mainGrid { grid-template-columns: 1fr; }
+}
+
+.leftCol,
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Generic card ── */
+.card {
+  background: var(--color-surface, #242424);
+  border: 1px solid var(--color-border, #333333);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.cardTitle {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text, #FFFFFF);
+  margin: 0 0 18px;
+}
+
+/* ── Composer ── */
+.captionArea {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--color-surface-2, #2E2E2E);
+  border: 1px solid var(--color-border, #333333);
+  border-radius: 10px;
+  color: var(--color-text, #FFFFFF);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 14px;
+  padding: 14px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.captionArea::placeholder { color: var(--color-text-muted, #9A9A9A); }
+
+.captionArea:focus {
+  border-color: var(--color-accent, #8FC740);
+}
+
+.captionFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0 16px;
+}
+
+.charCount {
+  font-size: 11px;
+  color: var(--color-text-muted, #9A9A9A);
+}
+
+/* Platform checkboxes */
+.platformRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.platformLabel {
+  cursor: pointer;
+}
+
+.platformLabel input[type='checkbox'] { display: none; }
+
+.platformChip {
+  display: block;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--color-surface-2, #2E2E2E);
+  border: 1px solid var(--color-border, #333333);
+  color: var(--color-text-muted, #9A9A9A);
+  transition: all 0.15s;
+}
+
+.platformActive {
+  background: rgba(143, 199, 64, 0.14);
+  border-color: var(--color-accent, #8FC740);
+  color: var(--color-accent, #8FC740);
+}
+
+/* Schedule row */
+.scheduleRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.scheduleRow .input,
+.scheduleRow input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Composer actions */
+.composerActions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ── Scheduled list ── */
+.emptyText {
+  font-size: 13px;
+  color: var(--color-text-muted, #9A9A9A);
+  text-align: center;
+  padding: 20px 0;
+}
+
+.scheduledList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scheduledItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: var(--color-surface-2, #2E2E2E);
+  border: 1px solid var(--color-border, #333333);
+  border-radius: 12px;
+}
+
+.scheduledImg {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.scheduledInfo { flex: 1; min-width: 0; }
+
+.scheduledCaption {
+  font-size: 13px;
+  color: var(--color-text, #FFFFFF);
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.scheduledMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.scheduledPlatforms {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-accent, #8FC740);
+}
+
+.scheduledTime {
+  font-size: 11px;
+  color: var(--color-text-muted, #9A9A9A);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Posts Grid ── */
+.postsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.postCard {
+  background: var(--color-surface-2, #2E2E2E);
+  border: 1px solid var(--color-border, #333333);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.postCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.30);
+}
+
+.postImg {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.postBody {
+  padding: 14px 16px;
+}
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.platformTag { font-size: 10px; }
+
+.postDate {
+  font-size: 11px;
+  color: var(--color-text-muted, #9A9A9A);
+}
+
+.postCaption {
+  font-size: 13px;
+  color: var(--color-text, #FFFFFF);
+  margin: 0 0 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+.postStats {
+  display: flex;
+  gap: 16px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted, #9A9A9A);
+}
+
+.statItem svg { color: #f87171; }

@@ -122,7 +122,24 @@
   font-size: 14px;
   color: #9A9A9A;
   text-align: center;
-  margin: 0 0 28px;
+  margin: 0 0 16px;
+}
+
+/* Demo hint */
+.demoHint {
+  font-size: 12px;
+  color: #8FC740;
+  text-align: center;
+  background: rgba(143, 199, 64, 0.08);
+  border: 1px solid rgba(143, 199, 64, 0.20);
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin: 0 0 20px;
+}
+
+.demoHint span {
+  font-weight: 700;
+  margin-right: 4px;
 }
 
 /* Error box */

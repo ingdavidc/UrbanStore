@@ -8,22 +8,22 @@ const FEATURED_PRODUCTS = [
   {
     id: '1', name: 'Hoodie Urban Classic', price: 89000, originalPrice: 120000,
     category: 'Hombre', sizes: ['S','M','L','XL'], isNew: true, isSale: true, stock: 15,
-    image: null,
+    image: '/assets/images/product-hoodie.png',
   },
   {
     id: '2', name: 'Jogger Streetwear Premium', price: 75000,
     category: 'Hombre', sizes: ['S','M','L'], isNew: false, stock: 8,
-    image: null,
+    image: '/assets/images/product-jogger.png',
   },
   {
-    id: '3', name: 'Crop Top Urban Fem', price: 45000, originalPrice: 60000,
-    category: 'Mujer', sizes: ['XS','S','M'], isNew: true, isSale: true, stock: 20,
-    image: null,
+    id: '3', name: 'Conjunto Deportivo Fem', price: 130000, originalPrice: 160000,
+    category: 'Mujer', sizes: ['XS','S','M','L'], isNew: true, isSale: true, stock: 20,
+    image: '/assets/images/product-set.png',
   },
   {
     id: '4', name: 'Gorra Snapback US8', price: 35000,
     category: 'Accesorios', sizes: ['Única'], isNew: false, stock: 30,
-    image: null,
+    image: '/assets/images/product-cap.png',
   },
 ]
 
@@ -99,7 +99,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Hero visual (placeholder for brand image) */}
+          {/* Hero visual */}
           <motion.div
             className={styles.heroVisual}
             initial={{ opacity: 0, scale: 0.9 }}
@@ -108,11 +108,11 @@ export default function Home() {
             aria-hidden="true"
           >
             <div className={styles.heroCard}>
-              <div className={styles.heroCardInner}>
-                <span className={styles.heroCardIcon}>US</span>
-                <p className={styles.heroCardLabel}>URBAN<span>/</span>STORE</p>
-                <p className={styles.heroCardSub}>Streetwear 2025</p>
-              </div>
+              <img
+                src="/assets/images/hero-banner.png"
+                alt="Urban 8 Store — Nueva Colección"
+                className={styles.heroImg}
+              />
               <div className={styles.heroCardAccent} />
             </div>
           </motion.div>

@@ -1,29 +1,42 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../../store/authStore';
 import styles from './Login.module.css';
+
+/*
+ * Demo login – no Firebase, no env vars.
+ * Any email + password combo works (just validates non-empty).
+ * Auth state is persisted in localStorage as a simple flag.
+ */
+
+const DEMO_EMAIL    = 'admin@urbanstore.com';
+const DEMO_PASSWORD = 'urban2026';
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login } = useAuthStore();
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail]     = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [loading, setLoading]   = useState(false);
+  const [error, setError]       = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    setLoading(true);
-    try {
-      await login(email, password);
-      navigate('/admin');
-    } catch (err) {
-      setError(err.message || 'Credenciales incorrectas. Intenta de nuevo.');
-    } finally {
-      setLoading(false);
+
+    if (!email.trim() || !password.trim()) {
+      setError('Por favor ingresa tu correo y contraseña.');
+      return;
     }
+
+    setLoading(true);
+
+    // Simulate network delay for realism
+    await new Promise((r) => setTimeout(r, 900));
+
+    // Accept DEMO credentials or any non-empty combo for demo purposes
+    localStorage.setItem('admin_auth', JSON.stringify({ email, loggedInAt: Date.now() }));
+    setLoading(false);
+    navigate('/admin');
   };
 
   return (
@@ -44,6 +57,11 @@ export default function Login() {
 
         <h1 className={styles.title}>Panel de Administración</h1>
         <p className={styles.subtitle}>Inicia sesión para continuar</p>
+
+        {/* Demo hint */}
+        <div className={styles.demoHint}>
+          <span>Demo:</span> {DEMO_EMAIL} / {DEMO_PASSWORD}
+        </div>
 
         {error && (
           <div className={styles.errorBox} role="alert">
@@ -67,7 +85,6 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
-              required
               disabled={loading}
             />
           </div>
@@ -82,7 +99,6 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
-              required
               disabled={loading}
             />
           </div>
