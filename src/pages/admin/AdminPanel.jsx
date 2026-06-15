@@ -215,7 +215,8 @@ export default function AdminPanel() {
           { id: 'home', label: 'Index & Multimedia', icon: '🎨' },
           { id: 'inventory', label: 'Inventario (Catálogo)', icon: '📦' },
           { id: 'social', label: 'Redes Sociales', icon: '📢' },
-          { id: 'finances', label: 'Finanzas, Caja y Apartados', icon: '💰' },
+          { id: 'sales', label: 'Ventas y Pagos', icon: '🛍️' },
+          { id: 'finances', label: 'Caja y Finanzas', icon: '💰' },
           { id: 'orders', label: 'Pedidos en Línea', icon: '🚚' },
         ].map((tab) => (
           <button
@@ -577,7 +578,90 @@ export default function AdminPanel() {
             </motion.div>
           )}
 
-          {/* ──── TAB 4: FINANCES, CASH LOG & CREDIT PLATFORMS ──── */}
+          {/* ──── TAB 4: SALES, PAYMENT OPTIONS, CREDITS & APARTADOS ──── */}
+          {activeTab === 'sales' && (
+            <motion.div
+              key="sales"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.25 }}
+              className={styles.tabPane}
+            >
+              <div className={styles.grid2Col}>
+                <div className={styles.leftCol}>
+                  {/* Payment Options Config */}
+                  <div className={styles.card}>
+                    <h3 className={styles.cardTitle}>Opciones de Pago</h3>
+                    <p className={styles.cardInfoText}>Habilita o deshabilita los métodos de pago disponibles en la tienda.</p>
+                    <div className={styles.form}>
+                      <label className={styles.platformCheckbox}>
+                        <input type="checkbox" defaultChecked /> <span>MercadoPago (Tarjetas / PSE)</span>
+                      </label>
+                      <label className={styles.platformCheckbox}>
+                        <input type="checkbox" defaultChecked /> <span>Nequi / Daviplata</span>
+                      </label>
+                      <label className={styles.platformCheckbox}>
+                        <input type="checkbox" defaultChecked /> <span>Sistecrédito</span>
+                      </label>
+                      <label className={styles.platformCheckbox}>
+                        <input type="checkbox" defaultChecked /> <span>Addi</span>
+                      </label>
+                      <label className={styles.platformCheckbox}>
+                        <input type="checkbox" defaultChecked /> <span>Pago Contra Entrega</span>
+                      </label>
+                      <button className="btn btn-primary" style={{ marginTop: '1rem' }} onClick={() => triggerToast('✅ Opciones de pago actualizadas')}>Guardar Opciones</button>
+                    </div>
+                  </div>
+
+                  {/* Systems of Apartados */}
+                  <div className={styles.card}>
+                    <h3 className={styles.cardTitle}>Sistemas de Apartado (Apartados)</h3>
+                    <div className={styles.apartadosList}>
+                      {apartados.map((a) => (
+                        <div key={a.id} className={styles.apartadoItem}>
+                          <div className={styles.apartadoHeader}>
+                            <strong>{a.customer}</strong>
+                            <span className={styles.apartadoDueDate}>Vence: {a.dueDate}</span>
+                          </div>
+                          <p className={styles.apartadoProduct}>{a.product}</p>
+                          <div className={styles.apartadoGrid}>
+                            <span>Valor total:</span><span>{formatCOP(a.total)}</span>
+                            <span>Abonado:</span><span>{formatCOP(a.paid)}</span>
+                            <span>Saldo pendiente:</span><span className={styles.saldoText}>{formatCOP(a.remaining)}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.rightCol}>
+                  {/* Credits */}
+                  <div className={styles.card}>
+                    <h3 className={styles.cardTitle}>Créditos Retail (Sistecrédito / Addi)</h3>
+                    <div className={styles.creditsList}>
+                      {credits.map((c) => (
+                        <div key={c.id} className={styles.creditItem}>
+                          <div className={styles.creditHeader}>
+                            <strong>{c.customer}</strong>
+                            <span className={c.platform === 'Addi' ? styles.addiBadge : styles.sisteBadge}>{c.platform}</span>
+                          </div>
+                          <div className={styles.creditGrid}>
+                            <span>Total financiado:</span><span>{formatCOP(c.total)}</span>
+                            <span>Cuotas:</span><span>{c.dues}</span>
+                            <span>Por cobrar:</span><span>{formatCOP(c.remaining)}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* ──── TAB 5: FINANCES & CASH LOG ──── */}
           {activeTab === 'finances' && (
             <motion.div
               key="finances"
@@ -618,98 +702,51 @@ export default function AdminPanel() {
                 </div>
               </div>
 
-              <div className={styles.grid2Col}>
-                {/* Money and Cash Register logs */}
-                <div className={styles.card}>
-                  <h3 className={styles.cardTitle}>Caja Diaria (Movimientos de Dinero)</h3>
-                  
-                  <form onSubmit={handleAddCashLog} className={styles.cashRegisterForm}>
-                    <div className={styles.formRow}>
-                      <select className="input" value={newCashType} onChange={(e) => setNewCashType(e.target.value)}>
-                        <option value="ingreso">Ingreso (+)</option>
-                        <option value="egreso">Egreso (-)</option>
-                      </select>
-                      <input
-                        type="number"
-                        className="input"
-                        placeholder="Monto ($)"
-                        required
-                        value={newCashAmount}
-                        onChange={(e) => setNewCashAmount(e.target.value)}
-                      />
-                    </div>
-                    <div className={styles.formRow}>
-                      <input
-                        type="text"
-                        className="input"
-                        placeholder="Concepto (ej: venta local, pago fletes)"
-                        required
-                        value={newCashDesc}
-                        onChange={(e) => setNewCashDesc(e.target.value)}
-                      />
-                      <button type="submit" className="btn btn-primary">
-                        Registrar Movimiento
-                      </button>
-                    </div>
-                  </form>
+              <div className={styles.card}>
+                <h3 className={styles.cardTitle}>Caja Diaria (Movimientos de Dinero)</h3>
+                
+                <form onSubmit={handleAddCashLog} className={styles.cashRegisterForm}>
+                  <div className={styles.formRow}>
+                    <select className="input" value={newCashType} onChange={(e) => setNewCashType(e.target.value)}>
+                      <option value="ingreso">Ingreso (+)</option>
+                      <option value="egreso">Egreso (-)</option>
+                    </select>
+                    <input
+                      type="number"
+                      className="input"
+                      placeholder="Monto ($)"
+                      required
+                      value={newCashAmount}
+                      onChange={(e) => setNewCashAmount(e.target.value)}
+                    />
+                  </div>
+                  <div className={styles.formRow}>
+                    <input
+                      type="text"
+                      className="input"
+                      placeholder="Concepto (ej: venta local, pago fletes)"
+                      required
+                      value={newCashDesc}
+                      onChange={(e) => setNewCashDesc(e.target.value)}
+                    />
+                    <button type="submit" className="btn btn-primary">
+                      Registrar Movimiento
+                    </button>
+                  </div>
+                </form>
 
-                  <div className={styles.cashLogs}>
-                    {cashLog.map((log) => (
-                      <div key={log.id} className={styles.cashItem}>
-                        <span className={log.type === 'ingreso' ? styles.incomeTag : styles.outcomeTag}>
-                          {log.type === 'ingreso' ? '+' : '-'} {formatCOP(log.amount)}
-                        </span>
-                        <div className={styles.cashInfo}>
-                          <span className={styles.cashDesc}>{log.desc}</span>
-                          <span className={styles.cashDate}>{log.date}</span>
-                        </div>
+                <div className={styles.cashLogs}>
+                  {cashLog.map((log) => (
+                    <div key={log.id} className={styles.cashItem}>
+                      <span className={log.type === 'ingreso' ? styles.incomeTag : styles.outcomeTag}>
+                        {log.type === 'ingreso' ? '+' : '-'} {formatCOP(log.amount)}
+                      </span>
+                      <div className={styles.cashInfo}>
+                        <span className={styles.cashDesc}>{log.desc}</span>
+                        <span className={styles.cashDate}>{log.date}</span>
                       </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Credits / Sistecredito / Addi logs & Apartado Layaways */}
-                <div className={styles.rightCol}>
-                  {/* Credits */}
-                  <div className={styles.card}>
-                    <h3 className={styles.cardTitle}>Créditos Retail (Sistecrédito / Addi)</h3>
-                    <div className={styles.creditsList}>
-                      {credits.map((c) => (
-                        <div key={c.id} className={styles.creditItem}>
-                          <div className={styles.creditHeader}>
-                            <strong>{c.customer}</strong>
-                            <span className={c.platform === 'Addi' ? styles.addiBadge : styles.sisteBadge}>{c.platform}</span>
-                          </div>
-                          <div className={styles.creditGrid}>
-                            <span>Total financiado:</span><span>{formatCOP(c.total)}</span>
-                            <span>Cuotas:</span><span>{c.dues}</span>
-                            <span>Por cobrar:</span><span>{formatCOP(c.remaining)}</span>
-                          </div>
-                        </div>
-                      ))}
                     </div>
-                  </div>
-
-                  {/* Systems of Apartados */}
-                  <div className={styles.card}>
-                    <h3 className={styles.cardTitle}>Sistemas de Apartado (Apartados)</h3>
-                    <div className={styles.apartadosList}>
-                      {apartados.map((a) => (
-                        <div key={a.id} className={styles.apartadoItem}>
-                          <div className={styles.apartadoHeader}>
-                            <strong>{a.customer}</strong>
-                            <span className={styles.apartadoDueDate}>Vence: {a.dueDate}</span>
-                          </div>
-                          <p className={styles.apartadoProduct}>{a.product}</p>
-                          <div className={styles.apartadoGrid}>
-                            <span>Valor total:</span><span>{formatCOP(a.total)}</span>
-                            <span>Abonado:</span><span>{formatCOP(a.paid)}</span>
-                            <span>Saldo pendiente:</span><span className={styles.saldoText}>{formatCOP(a.remaining)}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
