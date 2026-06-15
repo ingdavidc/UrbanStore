@@ -6,14 +6,14 @@ import styles from './Catalog.module.css'
 
 // Mock products — replace with Firestore query
 const ALL_PRODUCTS = [
-  { id: '1', name: 'Hoodie Urban Classic', price: 89000, originalPrice: 120000, category: 'Hombre', sizes: ['S','M','L','XL'], isNew: true, isSale: true, stock: 15 },
-  { id: '2', name: 'Jogger Streetwear', price: 75000, category: 'Hombre', sizes: ['S','M','L'], stock: 8 },
-  { id: '3', name: 'Crop Top Urban Fem', price: 45000, originalPrice: 60000, category: 'Mujer', sizes: ['XS','S','M'], isNew: true, isSale: true, stock: 20 },
-  { id: '4', name: 'Gorra Snapback US8', price: 35000, category: 'Accesorios', sizes: ['Única'], stock: 30 },
-  { id: '5', name: 'Camiseta Oversize', price: 55000, category: 'Hombre', sizes: ['S','M','L','XL','XXL'], isNew: true, stock: 12 },
-  { id: '6', name: 'Legging Performance', price: 65000, originalPrice: 85000, category: 'Mujer', sizes: ['XS','S','M','L'], isSale: true, stock: 18 },
-  { id: '7', name: 'Mochila Urban Pack', price: 95000, category: 'Accesorios', sizes: ['Única'], stock: 5 },
-  { id: '8', name: 'Conjunto Deportivo', price: 130000, originalPrice: 160000, category: 'Mujer', sizes: ['S','M','L'], isSale: true, stock: 10 },
+  { id: '1', name: 'Hoodie Urban Classic', price: 89000, originalPrice: 120000, category: 'Hombre', sizes: ['S','M','L','XL'], isNew: true, isSale: true, stock: 15, image: '/assets/images/product-hoodie.png' },
+  { id: '2', name: 'Jogger Streetwear', price: 75000, category: 'Hombre', sizes: ['S','M','L'], stock: 8, image: '/assets/images/product-jogger.png' },
+  { id: '3', name: 'Crop Top Urban Fem', price: 45000, originalPrice: 60000, category: 'Mujer', sizes: ['XS','S','M'], isNew: true, isSale: true, stock: 20, image: '/assets/images/product-set.png' },
+  { id: '4', name: 'Gorra Snapback US8', price: 35000, category: 'Accesorios', sizes: ['Única'], stock: 30, image: '/assets/images/product-cap.png' },
+  { id: '5', name: 'Camiseta Oversize', price: 55000, category: 'Hombre', sizes: ['S','M','L','XL','XXL'], isNew: true, stock: 12, image: '/assets/images/product-tshirt.png' },
+  { id: '6', name: 'Legging Performance', price: 65000, originalPrice: 85000, category: 'Mujer', sizes: ['XS','S','M','L'], isSale: true, stock: 18, image: '/assets/images/product-set.png' },
+  { id: '7', name: 'Mochila Urban Pack', price: 95000, category: 'Accesorios', sizes: ['Única'], stock: 5, image: '/assets/images/product-cap.png' },
+  { id: '8', name: 'Conjunto Deportivo', price: 130000, originalPrice: 160000, category: 'Mujer', sizes: ['S','M','L'], isSale: true, stock: 10, image: '/assets/images/product-set.png' },
 ]
 
 const CATEGORIES = ['Todos', 'Hombre', 'Mujer', 'Accesorios']
