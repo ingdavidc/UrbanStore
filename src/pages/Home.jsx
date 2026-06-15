@@ -86,7 +86,6 @@ export default function Home() {
           <div className={styles.heroGradient} />
           {/* Background watermark overlay */}
           <div className={styles.heroWatermark}>URBANSTORE</div>
-          {/* Background Video Loop - Highly Stable Public CDN */}
           <video
             autoPlay
             loop
@@ -95,7 +94,7 @@ export default function Home() {
             preload="auto"
             className={styles.heroVideo}
           >
-            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+            <source src="/assets/videos/urban-dance.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -196,7 +195,7 @@ export default function Home() {
               preload="auto"
               className={styles.brandShowcaseVideo}
             >
-              <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+              <source src="/assets/videos/skate-shadow.mp4" type="video/mp4" />
               Tu navegador no soporta reproducción de video.
             </video>
             <div className={styles.videoOverlay}>
