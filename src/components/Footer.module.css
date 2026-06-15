@@ -17,36 +17,24 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
   text-decoration: none;
   margin-bottom: var(--space-4);
 }
 
-.logoUs {
+.logoContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: white;
-  color: var(--color-bg-deep);
-  border-radius: 50%;
-  font-family: var(--font-heading);
-  font-weight: 900;
-  font-size: var(--text-sm);
-  border: 2px solid var(--color-accent);
-  flex-shrink: 0;
+  height: 48px;
+  width: auto;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
 }
 
-.logoText {
-  font-family: var(--font-heading);
-  font-weight: 900;
-  font-size: var(--text-xl);
-  color: var(--color-text);
-}
-
-.logoSlash {
-  color: var(--color-accent);
+.logoImage {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
 }
 
 .tagline {

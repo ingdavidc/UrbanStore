@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import useCartStore from '../store/cartStore'
 import styles from './Navbar.module.css'
 
@@ -50,11 +51,22 @@ export default function Navbar() {
         <div className={`container ${styles.inner}`}>
 
           {/* ── Logo ─────────────────────────────────── */}
-          <Link to="/" className={styles.logo} aria-label="Urban 8 Store - Inicio" onClick={closeMenu}>
-            <span className={styles.logoUs}>US</span>
-            <span className={styles.logoText}>
-              URBAN<span className={styles.logoSlash}>/</span>STORE
-            </span>
+          <Link to="/" className={styles.logo} aria-label="UrbanStore - Inicio" onClick={closeMenu}>
+            <motion.div
+              className={styles.logoContainer}
+              whileHover={{ 
+                scale: 1.05, 
+                rotate: [0, -5, 5, 0],
+                boxShadow: "0 0 20px rgba(143, 199, 64, 0.4)" 
+              }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              <img 
+                src="/assets/images/logo.webp" 
+                alt="UrbanStore" 
+                className={styles.logoImage} 
+              />
+            </motion.div>
           </Link>
 
           {/* ── Nav Links (desktop) ───────────────────── */}

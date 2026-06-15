@@ -75,12 +75,12 @@ export default function AdminSidebar() {
     <aside className={styles.sidebar}>
       {/* Logo */}
       <div className={styles.logoArea}>
-        <div className={styles.logoCircle}>
-          <span className={styles.logoLetters}>US</span>
-        </div>
-        <div className={styles.logoText}>
-          <span className={styles.logoUrban}>URBAN</span>
-          <span className={styles.logoStore}>STORE</span>
+        <div className={styles.logoContainer}>
+          <img 
+            src="/assets/images/logo.webp" 
+            alt="UrbanStore" 
+            className={styles.logoImage} 
+          />
         </div>
       </div>
 

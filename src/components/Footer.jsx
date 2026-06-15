@@ -26,11 +26,14 @@ export default function Footer() {
 
         {/* Brand column */}
         <div className={styles.brand}>
-          <Link to="/" className={styles.logo} aria-label="Urban 8 Store">
-            <span className={styles.logoUs}>US</span>
-            <span className={styles.logoText}>
-              URBAN<span className={styles.logoSlash}>/</span>STORE
-            </span>
+          <Link to="/" className={styles.logo} aria-label="UrbanStore">
+            <div className={styles.logoContainer}>
+              <img 
+                src="/assets/images/logo.webp" 
+                alt="UrbanStore" 
+                className={styles.logoImage} 
+              />
+            </div>
           </Link>
           <p className={styles.tagline}>
             Moda urbana y streetwear de alto impacto. Envíos a todo el país.
@@ -111,7 +114,7 @@ export default function Footer() {
       <div className={styles.bottom}>
         <div className="container">
           <p className={styles.copy}>
-            © {year} Urban 8 Store. Todos los derechos reservados.
+            © {year} UrbanStore. Todos los derechos reservados.
           </p>
           <Link to="/admin" className={styles.adminLink}>
             Panel Administrador

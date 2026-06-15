@@ -40,7 +40,7 @@ const RECENT_POSTS = [
   },
   {
     id: 3,
-    caption: 'Streetwear hecho en Colombia 🇨🇴 Urban 8 Store. Tu identidad, tu estilo.',
+    caption: 'Streetwear hecho en Colombia 🇨🇴 UrbanStore. Tu identidad, tu estilo.',
     platform: 'Instagram',
     date: '10 Jun 2026',
     likes: 391,
@@ -53,7 +53,7 @@ const ACCOUNTS = [
   {
     id: 'ig',
     name: 'Instagram',
-    handle: '@urban8store',
+    handle: '@urbanstore',
     connected: false,
     color: '#E1306C',
     Icon: () => (
@@ -67,7 +67,7 @@ const ACCOUNTS = [
   {
     id: 'fb',
     name: 'Facebook',
-    handle: 'Urban 8 Store',
+    handle: 'UrbanStore',
     connected: false,
     color: '#1877F2',
     Icon: () => (

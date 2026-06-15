@@ -46,13 +46,11 @@ export default function Login() {
       <div className={styles.card}>
         {/* Logo */}
         <div className={styles.logoWrapper}>
-          <div className={styles.logoCircle}>
-            <span className={styles.logoLetters}>US</span>
-          </div>
-          <div className={styles.logoText}>
-            <span className={styles.logoUrban}>URBAN</span>
-            <span className={styles.logoStore}>STORE</span>
-          </div>
+          <img 
+            src="/assets/images/logo.webp" 
+            alt="UrbanStore Logo" 
+            className={styles.logoImage} 
+          />
         </div>
 
         <h1 className={styles.title}>Panel de Administración</h1>
@@ -120,7 +118,7 @@ export default function Login() {
           </button>
         </form>
 
-        <p className={styles.footer}>Urban 8 Store &copy; {new Date().getFullYear()}</p>
+        <p className={styles.footer}>UrbanStore &copy; {new Date().getFullYear()}</p>
       </div>
     </div>
   );

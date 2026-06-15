@@ -118,7 +118,7 @@ export default function Dashboard() {
       <div className={styles.pageHeader}>
         <div>
           <h1 className={styles.pageTitle}>Dashboard</h1>
-          <p className={styles.pageSubtitle}>Bienvenido al panel de administración de Urban 8 Store</p>
+          <p className={styles.pageSubtitle}>Bienvenido al panel de administración de UrbanStore</p>
         </div>
         <span className={styles.dateChip}>
           {new Date().toLocaleDateString('es-CO', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}

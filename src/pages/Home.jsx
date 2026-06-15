@@ -70,7 +70,7 @@ export default function Home() {
               ✦ Nueva Colección 2025
             </span>
             <h1 className={styles.heroTitle}>
-              URBAN<span className={styles.heroSlash}>/</span>
+              URBAN
               <br />
               <span className={styles.heroTitleGreen}>STORE</span>
             </h1>
