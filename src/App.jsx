@@ -5,6 +5,7 @@ import useAuthStore from './store/authStore'
 import Navbar      from './components/Navbar'
 import Footer      from './components/Footer'
 import CartDrawer  from './components/CartDrawer'
+import FloatingBar from './components/FloatingBar'
 
 // Public pages
 import Home              from './pages/Home'
@@ -37,6 +38,7 @@ function PublicLayout({ children }) {
       <Navbar />
       <CartDrawer />
       <main className="page-wrapper">{children}</main>
+      <FloatingBar />
       <Footer />
     </>
   )

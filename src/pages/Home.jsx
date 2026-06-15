@@ -93,7 +93,7 @@ export default function Home() {
             preload="auto"
             className={styles.heroVideo}
           >
-            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-man-dancing-under-neon-lights-in-streetwear-40348-large.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -194,7 +194,7 @@ export default function Home() {
               preload="auto"
               className={styles.brandShowcaseVideo}
             >
-              <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+              <source src="https://assets.mixkit.co/videos/preview/mixkit-skater-doing-tricks-in-a-skatepark-at-sunset-34283-large.mp4" type="video/mp4" />
               Tu navegador no soporta reproducción de video.
             </video>
             <div className={styles.videoOverlay}>
