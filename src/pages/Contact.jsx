@@ -3,14 +3,13 @@ import { motion } from 'framer-motion';
 import styles from './Contact.module.css';
 
 const STORE_INFO = {
-  address: 'Calle 100 #15-20, Centro Comercial Andino, Local 312, Bogotá, Colombia',
-  phone: '+57 601 234 5678',
-  mobile: '+57 300 000 0000',
-  email: 'hola@urbanstore.co',
+  address: 'Cl. 26 # 15-75, Saravena, Arauca',
+  phone: '3173319592',
+  mobile: '3173319592',
+  email: 'contacto@urbanstore.com',
   hours: [
-    { day: 'Lunes – Viernes', time: '10:00 am – 8:00 pm' },
-    { day: 'Sábado', time: '10:00 am – 8:00 pm' },
-    { day: 'Domingo', time: '12:00 pm – 6:00 pm' },
+    { day: 'Lunes – Sábado', time: '8:00 am – 6:00 pm' },
+    { day: 'Domingo', time: '9:00 am – 5:00 pm' },
   ],
 };
 
@@ -114,7 +113,7 @@ export default function Contact() {
 
           {/* WhatsApp CTA */}
           <a
-            href="https://wa.me/573000000000"
+            href="https://wa.me/573173319592"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.whatsappBtn}
