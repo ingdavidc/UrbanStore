@@ -48,7 +48,15 @@ export default function Home() {
       <section className={styles.hero} aria-label="Hero Urban 8 Store">
         <div className={styles.heroBg} aria-hidden="true">
           <div className={styles.heroGradient} />
-          <div className={styles.heroPattern} />
+          {/* Background Video Loop - Nike Style */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className={styles.heroVideo}
+            src="https://assets.mixkit.co/videos/preview/mixkit-man-dancing-under-neon-lights-in-streetwear-40348-large.mp4"
+          />
         </div>
 
         <div className={`container ${styles.heroContent}`}>
@@ -129,6 +137,36 @@ export default function Home() {
             <path d="M12 5v14"/><path d="m19 12-7 7-7-7"/>
           </svg>
         </motion.div>
+      </section>
+
+      {/* ── IMMERSIVE BRAND VIDEO (Nike Feature) ─────────── */}
+      <section className={styles.brandVideoSection} aria-labelledby="brand-video-title">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-label">Vive la Experiencia</span>
+            <h2 className="section-title" id="brand-video-title">Actitud sin límites</h2>
+          </div>
+
+          <div className={styles.videoShowcaseContainer}>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className={styles.brandShowcaseVideo}
+              src="https://assets.mixkit.co/videos/preview/mixkit-skater-doing-tricks-in-a-skatepark-at-sunset-34283-large.mp4"
+            />
+            <div className={styles.videoOverlay}>
+              <div className={styles.videoOverlayContent}>
+                <h3>Colección Streetwear 2025</h3>
+                <p>Inspirada en el movimiento urbano y el estilo urbano real de las calles.</p>
+                <Link to="/catalogo" className="btn btn-primary btn-lg">
+                  Explorar Prendas
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ── CATEGORIES ───────────────────────────────────── */}
