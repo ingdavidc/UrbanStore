@@ -67,7 +67,7 @@ export default function Home() {
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
             <span className={`${styles.heroBadge} badge badge-accent`}>
-              ✦ Nueva Colección 2025
+              ✦ Nueva Colección 2026
             </span>
             <h1 className={styles.heroTitle}>
               URBAN
@@ -154,11 +154,11 @@ export default function Home() {
               muted
               playsInline
               className={styles.brandShowcaseVideo}
-              src="https://assets.mixkit.co/videos/preview/mixkit-skater-doing-tricks-in-a-skatepark-at-sunset-34283-large.mp4"
+              src="https://assets.mixkit.co/videos/preview/mixkit-young-man-running-in-streetwear-gear-in-a-city-40342-large.mp4"
             />
             <div className={styles.videoOverlay}>
               <div className={styles.videoOverlayContent}>
-                <h3>Colección Streetwear 2025</h3>
+                <h3>Colección Streetwear 2026</h3>
                 <p>Inspirada en el movimiento urbano y el estilo urbano real de las calles.</p>
                 <Link to="/catalogo" className="btn btn-primary btn-lg">
                   Explorar Prendas
