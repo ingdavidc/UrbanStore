@@ -43,19 +43,18 @@ const fadeUp = {
 export default function Home() {
   return (
     <div className={styles.page}>
-
       {/* ── HERO SECTION ─────────────────────────────────── */}
-      <section className={styles.hero} aria-label="Hero Urban 8 Store">
+      <section className={styles.hero} aria-label="Hero UrbanStore">
         <div className={styles.heroBg} aria-hidden="true">
           <div className={styles.heroGradient} />
-          {/* Background Video Loop - Nike Style */}
+          {/* Background Video Loop - Highly Stable Public CDN */}
           <video
             autoPlay
             loop
             muted
             playsInline
             className={styles.heroVideo}
-            src="https://assets.mixkit.co/videos/preview/mixkit-man-dancing-under-neon-lights-in-streetwear-40348-large.mp4"
+            src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054ba273e32c3eed21d857f6e52c800&profile_id=139&oauth2_token_id=57447761"
           />
         </div>
 
@@ -118,7 +117,7 @@ export default function Home() {
             <div className={styles.heroCard}>
               <img
                 src="/assets/images/hero-banner.png"
-                alt="Urban 8 Store — Nueva Colección"
+                alt="UrbanStore — Nueva Colección"
                 className={styles.heroImg}
               />
               <div className={styles.heroCardAccent} />
@@ -154,7 +153,7 @@ export default function Home() {
               muted
               playsInline
               className={styles.brandShowcaseVideo}
-              src="https://assets.mixkit.co/videos/preview/mixkit-young-man-running-in-streetwear-gear-in-a-city-40342-large.mp4"
+              src="https://player.vimeo.com/external/341496265.sd.mp4?s=d0f04c636f456c701ccbe831e51be7737e94e5e4&profile_id=164&oauth2_token_id=57447761"
             />
             <div className={styles.videoOverlay}>
               <div className={styles.videoOverlayContent}>
