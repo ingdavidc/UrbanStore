@@ -37,6 +37,22 @@
   z-index: 0;
 }
 
+.heroWatermark {
+  position: absolute;
+  bottom: 10%;
+  left: -5%;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(8rem, 16vw, 15rem);
+  letter-spacing: -0.05em;
+  color: var(--color-accent);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+  transform: rotate(-5deg);
+  z-index: 1;
+}
+
 /* ── BRAND VIDEO SHOWCASE ─────────────────────────────────── */
 .brandVideoSection {
   padding: var(--space-20) 0;

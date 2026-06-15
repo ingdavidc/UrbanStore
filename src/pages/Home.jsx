@@ -84,6 +84,8 @@ export default function Home() {
       <section className={styles.hero} aria-label="Hero UrbanStore">
         <div className={styles.heroBg} aria-hidden="true">
           <div className={styles.heroGradient} />
+          {/* Background watermark overlay */}
+          <div className={styles.heroWatermark}>URBANSTORE</div>
           {/* Background Video Loop - Highly Stable Public CDN */}
           <video
             autoPlay
