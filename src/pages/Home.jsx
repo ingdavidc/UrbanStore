@@ -6,9 +6,9 @@ import styles from './Home.module.css'
 // ── Mock data (replace with Firebase Firestore data) ──────────
 const FEATURED_PRODUCTS = [
   {
-    id: '1', name: 'Hoodie Urban Classic', price: 89000, originalPrice: 120000,
-    category: 'Hombre', sizes: ['S','M','L','XL'], isNew: true, isSale: true, stock: 15,
-    image: '/assets/images/product-hoodie.png',
+    id: '1', name: 'Zapatillas Urban Neon Run', price: 189000, originalPrice: 245000,
+    category: 'Calzado', sizes: ['38','39','40','41','42'], isNew: true, isSale: true, stock: 12,
+    image: '/assets/images/product-sneaker.png',
   },
   {
     id: '2', name: 'Jogger Streetwear Premium', price: 75000,
@@ -28,6 +28,17 @@ const FEATURED_PRODUCTS = [
 ]
 
 const CATEGORIES = [
+  { 
+    label: 'Calzado', 
+    icon: () => (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 17.5a2.5 2.5 0 0 0 5 0V17h11c1.1 0 2-.9 2-2v-2c0-.55-.45-1-1-1h-6.2l-3-4A2 2 0 0 0 9.2 7H5c-1.1 0-2 .9-2 2v8.5z" />
+        <path d="M12 12h8m-11 5v-3.5" />
+      </svg>
+    ), 
+    href: '/catalogo?cat=calzado', 
+    description: 'Zapatillas, sneakers urbanos' 
+  },
   { 
     label: 'Hombre', 
     icon: () => (
@@ -57,16 +68,6 @@ const CATEGORIES = [
     ), 
     href: '/catalogo?cat=accesorios', 
     description: 'Gorras, bolsos, mochilas' 
-  },
-  { 
-    label: 'Colección Nueva', 
-    icon: () => (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.3-6.3l-.7.7M6.7 17.3l-.7.7m12.6 0l-.7-.7M6.7 6.7l-.7-.7M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
-      </svg>
-    ), 
-    href: '/catalogo?filter=new', 
-    description: 'Lo más reciente' 
   },
 ]
 
