@@ -299,9 +299,17 @@
 }
 
 .categoryIcon {
-  font-size: 2.5rem;
-  line-height: 1;
-  position: relative;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-2);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.categoryCard:hover .categoryIcon {
+  transform: scale(1.1) rotate(-3deg);
+  color: var(--color-text);
 }
 
 .categoryLabel {

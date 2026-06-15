@@ -28,10 +28,46 @@ const FEATURED_PRODUCTS = [
 ]
 
 const CATEGORIES = [
-  { label: 'Hombre', icon: '👕', href: '/catalogo?cat=hombre', description: 'Camisetas, hoodies, joggers' },
-  { label: 'Mujer', icon: '👗', href: '/catalogo?cat=mujer', description: 'Crop tops, leggings, sets' },
-  { label: 'Accesorios', icon: '🧢', href: '/catalogo?cat=accesorios', description: 'Gorras, bolsos, mochilas' },
-  { label: 'Colección Nueva', icon: '✨', href: '/catalogo?filter=new', description: 'Lo más reciente' },
+  { 
+    label: 'Hombre', 
+    icon: () => (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20.38 3.46L16 7.83h-3v-3l4.38-4.37a1 1 0 0 1 1.41 0l1.59 1.59a1 1 0 0 1 0 1.41zM2 13h10v8H2v-8zm13-3h7v11h-7V10zM5 16h4M17 14h3M8 10c0-3.3 2.7-6 6-6" />
+      </svg>
+    ), 
+    href: '/catalogo?cat=hombre', 
+    description: 'Camisetas, hoodies, joggers' 
+  },
+  { 
+    label: 'Mujer', 
+    icon: () => (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2a5 5 0 0 0-5 5v3.17a10 10 0 0 0 3 7.18V22h4v-4.65a10 10 0 0 0 3-7.18V7a5 5 0 0 0-5-5zM9 7h6M12 10v4" />
+      </svg>
+    ), 
+    href: '/catalogo?cat=mujer', 
+    description: 'Crop tops, leggings, sets' 
+  },
+  { 
+    label: 'Accesorios', 
+    icon: () => (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 10h-2V7a4 4 0 0 0-8 0v3H6a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-6a3 3 0 0 0-3-3zM10 7a2 2 0 0 1 4 0v3h-4V7zM12 14v3" />
+      </svg>
+    ), 
+    href: '/catalogo?cat=accesorios', 
+    description: 'Gorras, bolsos, mochilas' 
+  },
+  { 
+    label: 'Colección Nueva', 
+    icon: () => (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.3-6.3l-.7.7M6.7 17.3l-.7.7m12.6 0l-.7-.7M6.7 6.7l-.7-.7M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+      </svg>
+    ), 
+    href: '/catalogo?filter=new', 
+    description: 'Lo más reciente' 
+  },
 ]
 
 const fadeUp = {
@@ -191,7 +227,7 @@ export default function Home() {
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
                 <Link to={cat.href} className={styles.categoryCard} id={`cat-${cat.label.toLowerCase().replace(' ', '-')}`}>
-                  <span className={styles.categoryIcon}>{cat.icon}</span>
+                  <span className={styles.categoryIcon}><cat.icon /></span>
                   <h3 className={styles.categoryLabel}>{cat.label}</h3>
                   <p className={styles.categoryDesc}>{cat.description}</p>
                   <span className={styles.categoryArrow}>→</span>
